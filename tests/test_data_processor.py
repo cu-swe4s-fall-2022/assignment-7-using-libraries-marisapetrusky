@@ -3,8 +3,8 @@ import os
 import sys
 import random
 import pdb
-sys.path.append("..")
-import data_processor as proc #nopep8
+sys.path.append('../')
+import data_processor as proc  # nopep8
 
 
 class TestDataProcessor(unittest.TestCase):
@@ -21,10 +21,12 @@ class TestDataProcessor(unittest.TestCase):
         self.assertEqual(r[0][0], randno)
         self.assertTrue(r[0][0] < 1)
 
-    def test_get_file_dim(self):
-        r = get_file_dimensions(file_name)
-        self.assertEqual(r, None)
+    def test_get_file_dim_known(self):
+        r = proc.get_file_dimensions('../iris.data', ',')
+        self.assertEqual(r, (150, 5))
+
+    def test_get_file_dim_nofile(self):
+        self.assertRaises(OSError, proc.get_file_dimensions, 'fake.txt', ',')
 
 if __name__ == '__main__':
     unittest.main()
-
