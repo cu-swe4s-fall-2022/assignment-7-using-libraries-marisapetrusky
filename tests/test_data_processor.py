@@ -50,7 +50,12 @@ class TestDataProcessor(unittest.TestCase):
         r = proc.write_matrix_to_file(num_rows,
                                       num_columns,
                                       self.test_write_file)
-        self.assertEqual(r, None)
+        try:
+            r = proc.get_file_dimensions(self.test_write_file, ',')
+            self.assertEqual(r[0], num_rows)
+            self.assertEqual(r[1], num_columns)
+        except:
+            self.fail('write_matrix_to_file did not create file')
 
     def test_write_mat_no_fname(self):
         self.assertRaises(TypeError,
@@ -60,7 +65,7 @@ class TestDataProcessor(unittest.TestCase):
                           22)
 
     def test_write_mat_not_csv(self):
-        self.assertRaises(IndexError,
+        self.assertRaises(TypeError,
                           proc.write_matrix_to_file,
                           1,
                           1,

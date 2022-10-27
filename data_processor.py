@@ -20,7 +20,7 @@ def get_random_matrix(num_rows, num_columns):
 
 
 # Return tuple of (no. rows, no columns)
-def get_file_dimensions(file_name, delim):
+def get_file_dimensions(file_name, delim=','):
     try:
         f = open(file_name, 'r')
         if (os.path.getsize(file_name) > 0):
@@ -42,8 +42,12 @@ def write_matrix_to_file(num_rows, num_columns, file_name):
     arr = get_random_matrix(num_rows, num_columns)
     if isinstance(file_name, str):
         if re.search('.csv', file_name):
+            with open(file_name, 'w', newline='') as f:
+                writer = csv.writer(f)
+                for i in range(num_rows):
+                    writer.writerow(arr[i][:])
             return None
         else:
-            raise IndexError('File name does not contain .csv')
+            raise TypeError('File name does not contain .csv')
     else:
         raise TypeError('File name not a string')
