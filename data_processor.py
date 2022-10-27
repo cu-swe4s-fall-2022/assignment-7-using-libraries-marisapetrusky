@@ -3,6 +3,7 @@ import numpy as np
 import sys
 import pdb
 import os
+import csv
 
 
 # Return num_rows x num_columns matrix of entries between 0 and 1
@@ -17,6 +18,7 @@ def get_random_matrix(num_rows, num_columns):
         return arr
 
 
+# Return tuple of (no. rows, no columns)
 def get_file_dimensions(file_name, delim):
     try:
         f = open(file_name, 'r')
@@ -34,5 +36,6 @@ def get_file_dimensions(file_name, delim):
         raise FileNotFoundError('File not found in get_file_dimensions')
 
 
+# Write random matrix to csv file
 def write_matrix_to_file(num_rows, num_columns, file_name):
     return None

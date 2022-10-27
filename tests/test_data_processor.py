@@ -3,6 +3,7 @@ import os
 import sys
 import random
 import pdb
+import csv
 sys.path.append('../')
 import data_processor as proc  # nopep8
 
@@ -39,6 +40,10 @@ class TestDataProcessor(unittest.TestCase):
     def test_get_file_dim_empty(self):
         self.assertRaises(TypeError, proc.get_file_dimensions,
                           self.test_empty_file, ',')
+
+    def test_write_mat(self):
+        r = proc.write_matrix_to_file(None, None, None)
+        self.assertEqual(r, None)
 
     def tearDown(self):
         os.remove(self.test_empty_file)
