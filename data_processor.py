@@ -40,12 +40,14 @@ def get_file_dimensions(file_name, delim=','):
 # Write random matrix to csv file
 def write_matrix_to_file(num_rows, num_columns, file_name):
     arr = get_random_matrix(num_rows, num_columns)
-    if isinstance(file_name, str):
-        if re.search('.csv', file_name):
+    checkFname = isinstance(file_name, str)
+    if checkFname:
+        if re.search('.csv', file_name) is not None:
             with open(file_name, 'w', newline='') as f:
                 writer = csv.writer(f)
                 for i in range(num_rows):
                     writer.writerow(arr[i][:])
+            print('Matrix successfully written.')
             return None
         else:
             raise TypeError('File name does not contain .csv')

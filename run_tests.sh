@@ -6,3 +6,5 @@ set -o
 
 python -m unittest tests/test_data_processor.py
 python -m unittest tests/test_plotter.py
+
+./tests/func_tests.sh

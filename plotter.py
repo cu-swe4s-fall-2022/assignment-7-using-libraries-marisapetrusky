@@ -98,6 +98,8 @@ def plot_iris(fname):
 
     fig3.tight_layout()
     fig3.savefig('multi_panel_figure.png')
+    
+    print('Figures plotted and saved!')
 
 
 if __name__ == '__main__':

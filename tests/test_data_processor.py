@@ -29,7 +29,7 @@ class TestDataProcessor(unittest.TestCase):
         self.assertTrue(r[0][0] < 1)
 
     def test_get_file_dim_known(self):
-        r = proc.get_file_dimensions('../iris.data', ',')
+        r = proc.get_file_dimensions('iris.data', ',')
         self.assertEqual(r, (150, 5))
 
     def test_get_file_dim_nofile(self):
