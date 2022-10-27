@@ -34,4 +34,4 @@ jobs:
           python -m pip install numpy
           conda install numpy
           conda install matplotlib
-          ./run_test.sh
+          ./run_tests.sh
