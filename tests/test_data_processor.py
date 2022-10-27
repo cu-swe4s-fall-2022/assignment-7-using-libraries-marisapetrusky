@@ -21,6 +21,10 @@ class TestDataProcessor(unittest.TestCase):
         self.assertEqual(r[0][0], randno)
         self.assertTrue(r[0][0] < 1)
 
+    def test_get_file_dim(self):
+        r = get_file_dimensions(file_name)
+        self.assertEqual(r, None)
+
 if __name__ == '__main__':
     unittest.main()
 
