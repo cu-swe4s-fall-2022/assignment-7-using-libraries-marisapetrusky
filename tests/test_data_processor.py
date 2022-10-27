@@ -19,6 +19,7 @@ class TestDataProcessor(unittest.TestCase):
         random.seed(1)
         r = proc.get_random_matrix(14, 14)
         self.assertEqual(r[0][0], randno)
+        self.assertTrue(r[0][0] < 1)
 
 if __name__ == '__main__':
     unittest.main()
