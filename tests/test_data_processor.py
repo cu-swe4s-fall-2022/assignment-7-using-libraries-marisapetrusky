@@ -10,6 +10,8 @@ import data_processor as proc #nopep8
 class TestDataProcessor(unittest.TestCase):
     def test_get_rand_mat_empty(self):
         self.assertRaises(TypeError, proc.get_random_matrix, None, None)
+        self.assertRaises(TypeError, proc.get_random_matrix, 'hi', 'bye')
+        self.assertRaises(TypeError, proc.get_random_matrix, 0.2, 0.2)
 
     def test_get_rand_mat_fill(self):
         random.seed(1)
