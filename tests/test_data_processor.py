@@ -8,6 +8,11 @@ import data_processor as proc  # nopep8
 
 
 class TestDataProcessor(unittest.TestCase):
+    def setUp(self):
+        self.test_empty_file = 'test_empty.data'
+        f = open(self.test_empty_file, 'w')
+        f.close()
+
     def test_get_rand_mat_empty(self):
         self.assertRaises(TypeError, proc.get_random_matrix, None, None)
         self.assertRaises(TypeError, proc.get_random_matrix, 'hi', 'bye')
@@ -26,7 +31,18 @@ class TestDataProcessor(unittest.TestCase):
         self.assertEqual(r, (150, 5))
 
     def test_get_file_dim_nofile(self):
-        self.assertRaises(OSError, proc.get_file_dimensions, 'fake.txt', ',')
+        self.assertRaises(FileNotFoundError,
+                          proc.get_file_dimensions,
+                          'fake.txt',
+                          ',')
+
+    def test_get_file_dim_empty(self):
+        self.assertRaises(TypeError, proc.get_file_dimensions,
+                          self.test_empty_file, ',')
+
+    def tearDown(self):
+        os.remove(self.test_empty_file)
+
 
 if __name__ == '__main__':
     unittest.main()

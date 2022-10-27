@@ -2,6 +2,7 @@ import random
 import numpy as np
 import sys
 import pdb
+import os
 
 
 # Return num_rows x num_columns matrix of entries between 0 and 1
@@ -19,14 +20,18 @@ def get_random_matrix(num_rows, num_columns):
 def get_file_dimensions(file_name, delim):
     try:
         f = open(file_name, 'r')
-        lines = f.readlines()
-        num_rows = len(lines)
-        cols = lines[0].rstrip().split(delim)
-        num_cols = len(cols)
-        f.close()
-        return (num_rows, num_cols)
-    except Exception:
-        raise OSError('File name not found in get_file_dimensions')
+        if (os.path.getsize(file_name) > 0):
+            lines = f.readlines()
+            num_rows = len(lines)
+            cols = lines[0].rstrip().split(delim)
+            num_cols = len(cols)
+            f.close()
+            return (num_rows, num_cols)
+        else:
+            f.close()
+            raise TypeError('File is empty.')
+    except FileNotFoundError:
+        raise FileNotFoundError('File not found in get_file_dimensions')
 
 
 def write_matrix_to_file(num_rows, num_columns, file_name):
