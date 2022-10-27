@@ -54,7 +54,7 @@ class TestDataProcessor(unittest.TestCase):
             r = proc.get_file_dimensions(self.test_write_file, ',')
             self.assertEqual(r[0], num_rows)
             self.assertEqual(r[1], num_columns)
-        except:
+        except Exception:
             self.fail('write_matrix_to_file did not create file')
 
     def test_write_mat_no_fname(self):
