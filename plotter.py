@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pdb
 
+
 def plot_iris(fname):
     header = ['Sepal width',
               'Sepal length',
@@ -28,7 +29,7 @@ def plot_iris(fname):
         f = open(fname, 'r')
     except FileNotFoundError:
         raise FileNotFoundError('iris data not found')
-    except Exception: 
+    except Exception:
         raise Exception('Unknown error in file readout.')
 
     for line in f:
@@ -97,6 +98,7 @@ def plot_iris(fname):
 
     fig3.tight_layout()
     fig3.savefig('multi_panel_figure.png')
+
 
 if __name__ == '__main__':
     main()
