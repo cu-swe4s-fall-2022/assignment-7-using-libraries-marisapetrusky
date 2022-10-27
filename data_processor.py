@@ -6,7 +6,7 @@ import pdb
 # Return num_rows x num_columns matrix of entries between 0 and 1
 def get_random_matrix(num_rows, num_columns):
     if not isinstance(num_rows, int) or not isinstance(num_columns, int):
-        return None
+        raise TypeError('get_random_matrix inputs not integers')
     else:
         arr = np.empty([num_rows, num_columns])
         for row in range(num_rows):
